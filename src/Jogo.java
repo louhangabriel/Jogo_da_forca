@@ -2,11 +2,12 @@ import javax.swing.JOptionPane;
 public class Jogo {
 
 	public static void main(String[] args) {
-		int x,confirm,tam_dica,tam_palavra, vidas = 6;
-		String jogador,amigo, dica_str, palavra_str, teste;
+		int x,y,confirm,tam_dica,tam_palavra, vidas = 6;
+		int acertos=0;
+		boolean erro= false;
+		String jogador,amigo, dica_str, palavra_str, teste, str_traco;
 		char letra;
 		char[] palavra = new char[50];
-		char[] dica = new char[50];
 		char[] traco = new char[50];
 		
 		jogador=JOptionPane.showInputDialog("Jogador: ");
@@ -27,20 +28,52 @@ public class Jogo {
 			x++;
 		}
 		x=0;
-		while(x < tam_dica) {
-			dica[x]=dica_str.charAt(x);
-			x++;
-		}
 		JOptionPane.showMessageDialog(null, "O Jogo começa agora! \n"+amigo+
 				" chame "+jogador+" para jogar!");
 		teste = "false";
 		x=0;
-		while((vidas > 0) || (teste == "false")) {
+		
+		while(vidas > 0 || acertos != tam_palavra) {	
+			str_traco=String.copyValueOf(traco);
 			letra=JOptionPane.showInputDialog(null,"Vidas: "+vidas+
-					"\nLetras: "
-					+tam_palavra+"\n"+"\nDigite uma letra: ").charAt(0);
-			vidas --;
+					"   Letras: "
+					+tam_palavra+"   Acertos: "+acertos+"\n\nDica: "+dica_str+"\n\nPalavra: "+str_traco+
+					"\n\nDigite uma letra: ").charAt(0);
+			for(y=0;y<tam_palavra;y++) {
+				if(letra == palavra[y]) {
+					JOptionPane.showMessageDialog(null, "LETRA CORRETA!");
+					traco[y]=palavra[y];
+					acertos++;
+				}else {
+					erro = true;
+				}
+			}
+			if(acertos == tam_palavra) {
+				JOptionPane.showMessageDialog(null,"FIM DE JOGO! \nVOCÊ GANHOU!"
+						+"\n\nRELATORIO DA PARTIDA: "+ "\nJogador: "+jogador+
+						"  Proponente: "+amigo+"\nVidas: "+vidas+
+						"   Letras: "
+						+tam_palavra+"   Acertos: "+acertos+"\n\nDica: "+dica_str+
+						"\n\nPalavra: "+palavra_str+"\nLetras acertadas: "+str_traco);
+				break;
+			}
+			if(erro == true) {
+				JOptionPane.showMessageDialog(null, "LETRA INCORRETA!");
+				erro = false;
+				vidas --;
+				if(vidas == 0) {
+					teste="false";
+					JOptionPane.showMessageDialog(null,"FIM DE JOGO! \nVOCÊ PERDEU!"
+							+"\n\nRELATORIO DA PARTIDA: "+ "\nJogador: "+jogador+
+							"  Proponente: "+amigo+ "\nVidas: "+vidas+
+							"   Letras: "
+							+tam_palavra+"   Acertos: "+acertos+"\n\nDica: "+dica_str+
+							"\n\nPalavra: "+palavra_str+"\nLetras acertadas: "+str_traco);
+					break;
+				}
+			}
 		}
+		
 	}
 
 }

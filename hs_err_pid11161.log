@@ -1,0 +1,21 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x00007f8094cff401, pid=11161, tid=11178
+#
+# JRE version: OpenJDK Runtime Environment (11.0.3+7) (build 11.0.3+7-Ubuntu-1ubuntu218.04.1)
+# Java VM: OpenJDK 64-Bit Server VM (11.0.3+7-Ubuntu-1ubuntu218.04.1, mixed mode, sharing, tiered, compressed oops, g1 gc, linux-amd64)
+# Problematic frame:
+# C  [libjimage.so+0x2401]
+#
+# Core dump will be written. Default location: Core dumps may be processed with "/lib/systemd/systemd-coredump %P %u %g %s %t 9223372036854775808 %e" (or dumping to /home/gabriel/eclipse-workspace/Jogo_da_forca/core.11161)
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.java.com/bugreport/crash.jsp
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -agentlib:jdwp=transport=dt_socket,suspend=y,address=localhost:37083 -javaagent:/home/gabriel/Documentos/Softwares/eclipse/java-2019-09/eclipse/configuration/org.eclipse.osgi/223/0/.cp/lib/javaagent-shaded.jar -Dfile.encoding=UTF-8 Jogo
+
+Host: Intel(R) Celeron(R) CPU  N3060  @ 1.60GHz, 2 cores, 3G, Linux Mint 19.2 Tina
